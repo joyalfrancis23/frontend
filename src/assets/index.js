@@ -1,3 +1,3 @@
-import logo from "./jk-low.svg";
+import logo from "./logo.png";
 
 export { logo };
