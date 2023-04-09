@@ -24,43 +24,6 @@ const Upload = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    //template_l1i9x8p
-    //service_2t241sj
-    //UuO8SUMqjRzGcibSG
-
-    emailjs
-      .send(
-        "service_2t241sj",
-        "template_l1i9x8p",
-        {
-          from_name: form.name,
-          to_name: "Jayakrishnan",
-          from_email: form.email,
-          to_email: "jayakrishnans2041@gmail.com",
-          message: form.message,
-        },
-        "UuO8SUMqjRzGcibSG"
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-
-          console.log(error);
-
-          alert("Something went wrong.");
-        }
-      );
   };
 
   return (
@@ -83,8 +46,8 @@ const Upload = () => {
               placeholder="What's your good name?"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
-          </label>          
-          
+          </label>
+
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Text</span>
             <textarea
@@ -113,4 +76,4 @@ const Upload = () => {
   );
 };
 
-export default SectionWrapper(Upload, "contact");
+export default SectionWrapper(Upload, "upload");
