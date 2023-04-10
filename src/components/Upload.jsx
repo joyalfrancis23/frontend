@@ -30,7 +30,7 @@ const Upload = () => {
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+        className="flex-[0.75] bg-[#30011E] p-8 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Let's do this</p>
         <h3 className={styles.sectionHeadText}>Compare.</h3>
@@ -44,7 +44,7 @@ const Upload = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-[#500232] py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
 
@@ -56,7 +56,7 @@ const Upload = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What do you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-[#500232] py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
 
@@ -66,7 +66,7 @@ const Upload = () => {
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            className="bg-[#500232] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
           >
             {loading ? "Checking..." : "Check"}
           </button>
