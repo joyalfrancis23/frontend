@@ -18,14 +18,14 @@ const Upload = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setForm({ ...form, [name]: value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try{
-      const response = await fetch('http://127.0.0.1:8000/submit/',{
+      const response = await fetch('/submit/',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
