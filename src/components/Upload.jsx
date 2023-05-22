@@ -5,6 +5,8 @@ import Dragdrop from "./Dragdrop";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
+import axios from 'axios';
+
 
 const Upload = () => {
   const formRef = useRef();
@@ -21,25 +23,44 @@ const Upload = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try{
-      const response = await fetch('/submit/',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      console.log("Data SendED!");
-    }catch(error){
-      console.log(error.body);
-      console.log("Somethings not right");
-    }
+  //   try{
+  //     const response = await fetch('/submit/',{
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     console.log("Data SendED!");
+  //   }catch(error){
+  //     console.log(error.body);
+  //     console.log("Somethings not right");
+  //   }
 
-    setLoading(true);
-  };
+  //   setLoading(true);
+  // };
+
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+   
+
+  axios.post('http://127.0.0.1:8000/', formData)
+    .then(response => {
+      // Handle the response from the Django backend
+      console.log(response.data)
+      setLoading(true)
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the request
+      console.log(error)
+    });
+}
+
 
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
