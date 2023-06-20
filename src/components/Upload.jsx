@@ -5,8 +5,7 @@ import Dragdrop from "./Dragdrop";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
-import axios from 'axios';
-
+import axios from "axios";
 
 const Upload = () => {
   const formRef = useRef();
@@ -45,39 +44,32 @@ const Upload = () => {
   //   setLoading(true);
   // };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-
-    axios.post('http://127.0.0.1:8000/', formData)
-      .then(response => {
+    axios
+      .post("http://127.0.0.1:8000/", formData)
+      .then((response) => {
         // setLoading(true)
         // Handle the response from the Django backend
-        console.log(response.data.output)
+        console.log(response.data.output);
         setoutput(response.data.output);
-        setLoading(false)
+        setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         // Handle any errors that occurred during the request
-        console.log(error)
+        console.log(error);
       });
-  }
-
+  };
 
   return (
-    {
-      changeBody ? (
-        <div>
-    <p>{output ? ('True') : ('False')}</p>
-        </div >
-      ): (
-        <div className = "xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
+    <>
+      <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
         <motion.div
-          variants={ slideIn("left", "tween", 0.2, 1) }
+          variants={slideIn("left", "tween", 0.2, 1)}
           className="flex-[0.75] bg-[#171D1C] p-8 rounded-2xl"
-      >
+        >
           <p className={styles.sectionSubText}>Let's do this</p>
           <h3 className={styles.sectionHeadText}>Compare.</h3>
 
@@ -117,13 +109,11 @@ const Upload = () => {
               {loading ? "Checking..." : "Check"}
             </button>
           </form>
-        </motion.div >
-      </div >
+        </motion.div>
+      </div>
 
-  <div>
-    <p className="text-black text-lg">{output ? ('true') : ('False')}</p>
-  </div>
-)}
+      
+    </>
   );
 };
 
